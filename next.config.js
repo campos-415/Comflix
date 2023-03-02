@@ -4,7 +4,8 @@ module.exports = {
 }
 
 module.exports = {
+  reactStrictMode: true,
   images: {
-    domains: ['image.tmdb.org'],
+    domains: ['assets.nflxext.com', 'image.tmdb.org', 'rb.gy'],
   },
 }
