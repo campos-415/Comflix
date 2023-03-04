@@ -30,6 +30,6 @@ export interface Element {
   | "Featurette"
   | "Behind the Scenes"
   | "Clip"
-  | "Trailers"
+  | "Trailer"
   | "Teaser"
 }
