@@ -73,35 +73,37 @@ function Modal() {
                 style={{ position: "absolute", top: "0", left: "0" }}
                 playing={playing}
                 muted={muted}
+                controls={false}
               />
-              <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+              <div className="text-xs md:text-lg absolute bottom-10 flex w-full items-center justify-between px-10">
                 <div className="flex space-x-2">
                   <button
-                    className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] "
+                    className="w-8 h-8 md:w-11 md:h-11 modalButton "
                     onClick={() => setPlaying(!playing)}>
                     {playing ? (
-                      <PauseIcon className="w-7 h-7 text-black" />
+                      <>
+                      <PauseIcon className="w-4 h-4 md:w-7 md:h-7 text-white" />
+                      </>
                     ) : (
                       <>
-                        <FaPlay className="w-7 h-7 text-black" />
-                        Play
+                        <FaPlay className="w-3 h-3 md:w-6 md:h-6 text-white" />
                       </>
                     )}
                   </button>
-                  <button className="modalButton">
-                    <PlusIcon />
+                  <button className="w-8 h-8 md:w-11 md:h-11 modalButton">
+                    <PlusIcon className="w-4 h-4 md:w-11 md:h-11"/>
                   </button>
-                  <button className="modalButton">
-                    <ThumbUpIcon />
+                  <button className="w-8 h-8 md:w-11 md:h-11 modalButton">
+                    <ThumbUpIcon className="w-4 h-4 md:w-7 md:h-7" />
                   </button>
                 </div>
                 <button
-                  className="modalButton"
+                  className="w-8 h-8 md:w-11 md:h-11 modalButton"
                   onClick={() => setMuted(!muted)}>
                   {muted ? (
-                    <VolumeOffIcon className="w-6 h6" />
+                    <VolumeOffIcon className="w-4 h-4 md:w-11 md:h-11 lg:w-9 lg:h-9" />
                   ) : (
-                    <VolumeUpIcon className="w-6 h6" />
+                    <VolumeUpIcon className="w-4 h-4 md:w-11 md:h-11 lg:w-9 lg:h-9" />
                   )}
                 </button>
               </div>
@@ -137,8 +139,11 @@ function Modal() {
               </div>
             </div>
 
-            <div className="flex- flex-col gap-x-10 gap-y-4 font-ligth md:flex-row">
-              <p className="w-5/6">{movie?.overview}</p>
+            <div className="flex flex-col gap-x-10 gap-y-4 font-ligth md:flex-row">
+              <div>
+                <h2 className="font-bold text-xl pb-2">{movie?.name || movie?.original_name || movie?.title}</h2>
+                <p className="w-5/6">{movie?.overview}</p>
+              </div>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genre: </span>
