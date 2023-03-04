@@ -2,35 +2,50 @@ import React, { useEffect, useState } from "react";
 import { BellIcon, SearchIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
-
+import { useRecoilState } from "recoil";
+import { searchState } from "../atoms/modalAtom";
+import { useRouter } from "next/router";
 
 function Header() {
-  const [isScroll, setIsScroll] = useState(false)
-  const {logout} = useAuth()
+  const [isScroll, setIsScroll] = useState(false);
+  const [search, setSearch] = useRecoilState(searchState);
+  const router = useRouter();
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setIsScroll(true)
-      }else {
-        setIsScroll(false)
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
       }
-    }
-    window.addEventListener("scroll", handleScroll)
+    };
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  },[])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  function setSearchInput(e: string) {
+    setSearch(e);
+  }
+
   return (
-    <header className={`${(isScroll && "bg-[#141414]")}`}>
+    <header className={`${isScroll && "bg-[#141414]"} `}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <img
-          src="https://rb.gy/ulxxee"
-          width={100}
-          height={100}
-          className="cursor-pointer object-contain"
-        />
-        <ul className="hidden space-x-4 md:flex">
+        <div className="flex items-center">
+          <img
+            src="https://com-flix.vercel.app/assets/logo.svg"
+            width={60}
+            height={60}
+            className="cursor-pointer object-contain"
+          />
+          <h1 className="text-2xl font-bold">
+            Com<span className="text-[#1d9bf0]">flix</span>
+          </h1>
+        </div>
+
+        <ul className="hidden space-x-4 md:flex ">
           <li className="HeaderLink">Home</li>
           <li className="HeaderLink">Tv Shows</li>
           <li className="HeaderLink">Movies</li>
@@ -40,15 +55,34 @@ function Header() {
       </div>
 
       <div className="flex items-center space-x-4 text-sm font-light">
-        <SearchIcon className="hidden sm:inline w-6 h-6" />
-        <p className="hidden lg:inline">Kids</p>
-        <BellIcon className="hidden sm:inline w-6 h-6" />
-          <img
-            onClick={logout}
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointer rounded"
-          />
+        <form>
+          <div className="group flex items-center bg-transparent  p-3 rounded-full relative">
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                router.push('/movies')
+                console.log(e);
+              }}>
+              <SearchIcon className="group text-[#1d9bf0] w-5 -z-50 " />
+            </button>
+            <input
+              type="text"
+              className="bg-transparent placeholder-gray-500 outline-none 
+            text-[#d9d9d9] pl-5 pr-5 border border-[#1d9bf0]/50 
+            focus:border-[#1d9bf0] rounded-full focus:bg-[#141414] absolute inset-0 md:relative md:inset-x-2 focus:relative focus:inset-x-[1px] focus:shadow-lg "
+              onChange={(e) => {
+                setSearchInput(e.target.value);
+              }}
+            />
+          </div>
+        </form>
+
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="cursor-pointer rounded"
+        />
       </div>
     </header>
   );

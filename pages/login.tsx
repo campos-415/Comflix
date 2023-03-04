@@ -21,7 +21,6 @@ function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
     if (login) {
       await signIn(data.email, data.password);
     } else {
@@ -35,18 +34,21 @@ function Login() {
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Image
-        alt="bgImg"
-        src="https://rb.gy/p2hphi"
-        fill
-        className="-z-10 !hidden opacity-60 sm:!inline"
-      />
-      <img
+      <div className="flex items-center absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6">
+          <img
+          src="https://com-flix.vercel.app/assets/logo.svg"
+          width={60}
+          height={60}
+          className="cursor-pointer object-contain"
+        />
+        <h1 className="text-2xl font-bold">Com<span className="text-[#1d9bf0]">flix</span></h1>
+        </div>
+      {/* <img
         src="https://rb.gy/ulxxee"
         className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
         width={150}
         height={150}
-      />
+      /> */}
 
       <form
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
@@ -85,15 +87,15 @@ function Login() {
           </label>
         </div>
         <button
-          className="w-full rounded bg-[#E50914] py-3 font-semibold"
+          className="w-full rounded bg-[#1d9bf0] py-3 font-semibold"
           onClick={() => setLogin(true)}
           type="submit">
           Sign In
         </button>
         <div className="text-[gray]">
-          New to Netflix?{" "}
+          New to Comflix?{" "}
           <button
-            className="cursor-pointer text-white hover:underline"
+            className="cursor-pointer text-white hover:underline hover:text-[#1d9bf0]"
             onClick={() => setLogin(false)}
             type="submit">
             Sign up now
