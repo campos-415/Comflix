@@ -14,5 +14,5 @@ export const movieState = atom<Movie | DocumentData | null> ({
 
 export const searchState = atom<string> ({
   key: "searchState",
-  default: "",
+  default: "new",
 })

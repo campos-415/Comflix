@@ -18,7 +18,7 @@ interface Props {
 function movies() {
   const search = useRecoilValue(searchState);
   const [movie, setMovie] = useState<Movie[]>([]);
-  const api = `https://api.themoviedb.org/3/search/movie?api_key=42cd7151deef50239cbf47f6f8462d1b&language=en-US&query=fast&page=1&include_adult=false`;
+  const api = `https://api.themoviedb.org/3/search/movie?api_key=42cd7151deef50239cbf47f6f8462d1b&language=en-US&query=${search}&page=1&include_adult=false`;
   // console.log(search)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function movies() {
     const fetchPostData = async () => {
       const res = await fetch(api);
       const data = await res.json();
-      setMovie(data);
+      setMovie(data.results);
     };
     fetchPostData();
   }, [search]);
@@ -45,11 +45,11 @@ function movies() {
       </Head>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        {movies}
-        {/* <ShowMovies movie={movies} /> */}
+
+
         <Banner netflixOriginals={movie} />
         <section className="md:space-y-24">
-          {/* <MoviePage movies={movie} title="Fast" /> */}
+          <MoviePage movies={movie} title="Fast" />
         </section>
       </main>
       <Modal />

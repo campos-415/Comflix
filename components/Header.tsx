@@ -12,9 +12,6 @@ function Header() {
   const router = useRouter();
   const { logout } = useAuth();
 
-  function getMovies(e) {
-    setSearch(e.target.value)
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +26,7 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  //  console.log(search)
+  
   return (
     <header className={`${isScroll && "bg-[#141414]"} `}>
       <div className="flex items-center space-x-2 md:space-x-10">
