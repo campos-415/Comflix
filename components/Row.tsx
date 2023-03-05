@@ -48,8 +48,8 @@ function Row({ movies, title }: Props) {
           className="flex items-center space-x-1.5 overflow-x-scroll md:space-x-2.5 md:p-2 scrollbar-hide">
           {movies.map((movie, index) => (
             <div className="flex flex-col">
-              <Thumbnail key={movie.id} movie={movie} />
-              {/* <p key={index} className="hidden md:inline" >{movie?.name || movie?.original_name || movie?.title}</p> */}
+              <Thumbnail key={movie.id || movie.name.toString()} movie={movie} />
+
             </div>
           ))}
         </div>

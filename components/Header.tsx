@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import { BellIcon, SearchIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { searchState } from "../atoms/modalAtom";
 import { useRouter } from "next/router";
 
 function Header() {
   const [isScroll, setIsScroll] = useState(false);
-  const [search, setSearch] = useRecoilState(searchState);
+  const [search, setSearch] = useRecoilState<string>(searchState);
   const router = useRouter();
   const { logout } = useAuth();
+
+  function getMovies(e) {
+    setSearch(e.target.value)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,24 +30,24 @@ function Header() {
     };
   }, []);
 
-  function setSearchInput(e: string) {
-    setSearch(e);
-  }
-
+  //  console.log(search)
   return (
     <header className={`${isScroll && "bg-[#141414]"} `}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <div className="flex items-center">
-          <img
-            src="https://com-flix.vercel.app/assets/logo.svg"
-            width={60}
-            height={60}
-            className="cursor-pointer object-contain"
-          />
-          <h1 className="text-2xl font-bold">
-            Com<span className="text-[#1d9bf0]">flix</span>
-          </h1>
-        </div>
+        <Link href="/">
+          <div className="flex items-center">
+            <img
+              src="https://com-flix.vercel.app/assets/logo.svg"
+              width={60}
+              height={60}
+              className="cursor-pointer object-contain"
+            />
+            <h1 className="text-2xl font-bold">
+              Com<span className="text-[#1d9bf0]">flix</span>
+            </h1>
+          </div>
+        </Link>
+        
 
         <ul className="hidden space-x-4 md:flex ">
           <li className="HeaderLink">Home</li>
@@ -60,8 +64,7 @@ function Header() {
             <button
               onClick={(e) => {
                 e.preventDefault()
-                router.push('/movies')
-                console.log(e);
+                router.push(`/${search}`)
               }}>
               <SearchIcon className="group text-[#1d9bf0] w-5 -z-50 " />
             </button>
@@ -71,7 +74,8 @@ function Header() {
             text-[#d9d9d9] pl-5 pr-5 border border-[#1d9bf0]/50 
             focus:border-[#1d9bf0] rounded-full focus:bg-[#141414] absolute inset-0 md:relative md:inset-x-2 focus:relative focus:inset-x-[1px] focus:shadow-lg "
               onChange={(e) => {
-                setSearchInput(e.target.value);
+                setSearch(e.target.value)
+                // console.log(e.target.value);
               }}
             />
           </div>

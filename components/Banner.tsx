@@ -8,7 +8,7 @@ import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
 
 interface Props {
-  netflixOriginals: Movie[];
+  netflixOriginals: Movie[] ;
 }
 
 function Banner({ netflixOriginals }: Props) {
