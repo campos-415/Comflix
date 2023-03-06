@@ -36,10 +36,6 @@ function Modal() {
         }&language=en-US&append_to_response=videos`
       ).then((res) => res.json());
 
-      // https://api.themoviedb.org/3/search/movie?api_key=${
-      //   process.env.NEXT_PUBLIC_API_KEY
-      // }&language=en-US&query=${search}&page=1&include_adult=false
-
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === "Trailer"

@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { searchState } from "../atoms/modalAtom";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Header() {
   const [isScroll, setIsScroll] = useState(false);
@@ -31,11 +32,12 @@ function Header() {
       <div className="flex items-center space-x-2 md:space-x-10">
         <Link href="/">
           <div className="flex items-center">
-            <img
-              src="https://com-flix.vercel.app/assets/logo.svg"
+            <Image
+              src="https://moviefinder415.vercel.app/assets/logo.svg"
               width={60}
               height={60}
               className="cursor-pointer object-contain"
+              alt="logoImg"
             />
             <h1 className="text-2xl font-bold hidden  sm:inline md:inline">
               Com<span className="text-[#1d9bf0]">flix</span>

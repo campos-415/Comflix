@@ -8,10 +8,12 @@ import Modal from "../components/Modal";
 import MoviePage from "../components/MoviePage";
 import { useEffect, useState } from "react";
 
+
 function movies() {
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const search = useRecoilValue(searchState);
   const [movie, setMovie] = useState<Movie[]>([]);
-  const api = `https://api.themoviedb.org/3/search/movie?api_key=42cd7151deef50239cbf47f6f8462d1b&language=en-US&query=${search}&page=1&include_adult=false`;
+  const api = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`;
   // console.log(search)
 
   useEffect(() => {
