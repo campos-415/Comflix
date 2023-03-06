@@ -26,7 +26,6 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
   return (
     <header className={`${isScroll && "bg-[#141414]"} `}>
       <div className="flex items-center space-x-2 md:space-x-10">
@@ -38,14 +37,14 @@ function Header() {
               height={60}
               className="cursor-pointer object-contain"
             />
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold hidden  sm:inline md:inline">
               Com<span className="text-[#1d9bf0]">flix</span>
             </h1>
           </div>
         </Link>
         
 
-        <ul className="hidden space-x-4 md:flex ">
+        <ul className="hidden space-x-4 lg:flex ">
           <li className="HeaderLink">Home</li>
           <li className="HeaderLink">Tv Shows</li>
           <li className="HeaderLink">Movies</li>
@@ -54,9 +53,9 @@ function Header() {
         </ul>
       </div>
 
-      <div className="flex items-center space-x-4 text-sm font-light">
+      <div className="flex items-center -space-x-6 text-sm font-light">
         <form>
-          <div className="group flex items-center bg-transparent  p-3 rounded-full relative">
+          <div className="group flex items-center bg-transparent rounded-full">
             <button
               onClick={(e) => {
                 e.preventDefault()
@@ -66,12 +65,12 @@ function Header() {
             </button>
             <input
               type="text"
-              className="bg-transparent placeholder-gray-500 outline-none 
-            text-[#d9d9d9] pl-5 pr-5 border border-[#1d9bf0]/50 
-            focus:border-[#1d9bf0] rounded-full focus:bg-[#141414] absolute inset-0 md:relative md:inset-x-2 focus:relative focus:inset-x-[1px] focus:shadow-lg "
+              placeholder="Search Comflix"
+              className="bg-transparent placeholder-white w-[65%] outline-none 
+            text-[#d9d9d9] pl-2 border border-[#1d9bf0]/50 
+            focus:border-[#1d9bf0] rounded-full focus:bg-[#141414]"
               onChange={(e) => {
                 setSearch(e.target.value)
-                // console.log(e.target.value);
               }}
             />
           </div>

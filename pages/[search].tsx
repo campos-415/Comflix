@@ -7,13 +7,6 @@ import { Movie } from "../typings";
 import Modal from "../components/Modal";
 import MoviePage from "../components/MoviePage";
 import { useEffect, useState } from "react";
-import requests from "../utils/requests";
-import ShowMovies from "../components/ShowMovies";
-import { GetServerSideProps } from "next";
-
-interface Props {
-  movie: Movie[]
-}
 
 function movies() {
   const search = useRecoilValue(searchState);

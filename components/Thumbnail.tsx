@@ -24,7 +24,8 @@ function Thumbnail({ movie }: Props) {
       setCurrentMovie(movie)
       console.log(movie)
     }}>
-      <Image
+      {movie?.poster_path || movie?.backdrop_path ? (
+        <Image
         src={`https://image.tmdb.org/t/p/w500${
           movie?.backdrop_path || movie?.poster_path
         }`}
@@ -34,6 +35,10 @@ function Thumbnail({ movie }: Props) {
         sizes="medium"
         priority
       />
+      ):(
+        <img src="/comingsoon.jpg" className="w-full h-full rounded-sm object-cover md:rounded"alt="" />
+      )}
+      
     </div>
   );
 }

@@ -37,8 +37,8 @@ function Modal() {
       ).then((res) => res.json());
 
       // https://api.themoviedb.org/3/search/movie?api_key=${
-        //   process.env.NEXT_PUBLIC_API_KEY
-        // }&language=en-US&query=${search}&page=1&include_adult=false
+      //   process.env.NEXT_PUBLIC_API_KEY
+      // }&language=en-US&query=${search}&page=1&include_adult=false
 
       if (data?.videos) {
         const index = data.videos.results.findIndex(
@@ -86,7 +86,7 @@ function Modal() {
                     onClick={() => setPlaying(!playing)}>
                     {playing ? (
                       <>
-                      <PauseIcon className="w-4 h-4 md:w-7 md:h-7 text-white" />
+                        <PauseIcon className="w-4 h-4 md:w-7 md:h-7 text-white" />
                       </>
                     ) : (
                       <>
@@ -95,7 +95,7 @@ function Modal() {
                     )}
                   </button>
                   <button className="w-8 h-8 md:w-11 md:h-11 modalButton">
-                    <PlusIcon className="w-4 h-4 md:w-11 md:h-11"/>
+                    <PlusIcon className="w-4 h-4 md:w-11 md:h-11" />
                   </button>
                   <button className="w-8 h-8 md:w-11 md:h-11 modalButton">
                     <ThumbUpIcon className="w-4 h-4 md:w-7 md:h-7" />
@@ -115,15 +115,24 @@ function Modal() {
           ) : (
             <>
               <div className="absolute top-0 left-0 -z-10 w-[100%] h-[100%]">
-                <Image
-                  className="object-cover"
-                  src={`${baseUrl}${
-                    movie?.backdrop_path || movie?.poster_path
-                  }`}
-                  alt="InfoImg"
-                  fill
-                  priority
-                />
+                {movie?.poster_path || movie?.backdrop_path ? (
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${
+                      movie?.backdrop_path || movie?.poster_path
+                    }`}
+                    className="rounded-sm object-cover md:rounded"
+                    fill
+                    alt="movieImg"
+                    sizes="medium"
+                    priority
+                  />
+                ) : (
+                  <img
+                    src="/comingsoon.jpg"
+                    className="w-full h-full rounded-sm object-fit md:rounded"
+                    alt=""
+                  />
+                )}
               </div>
             </>
           )}
@@ -145,7 +154,9 @@ function Modal() {
 
             <div className="flex flex-col gap-x-10 gap-y-4 font-ligth md:flex-row">
               <div>
-                <h2 className="font-bold text-xl pb-2">{movie?.name || movie?.original_name || movie?.title}</h2>
+                <h2 className="font-bold text-xl pb-2">
+                  {movie?.name || movie?.original_name || movie?.title}
+                </h2>
                 <p className="w-5/6">{movie?.overview}</p>
               </div>
               <div className="flex flex-col space-y-3 text-sm">
