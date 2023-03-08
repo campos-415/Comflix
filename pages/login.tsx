@@ -35,20 +35,17 @@ function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex items-center absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6">
-          <img
-          src="https://com-flix.vercel.app/assets/logo.svg"
+        <Image
+          src="https://moviefinder415.vercel.app/assets/logo.svg"
           width={60}
           height={60}
           className="cursor-pointer object-contain"
+          alt="logoImg"
         />
-        <h1 className="text-2xl font-bold">Com<span className="text-[#1d9bf0]">flix</span></h1>
-        </div>
-      {/* <img
-        src="https://rb.gy/ulxxee"
-        className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
-        width={150}
-        height={150}
-      /> */}
+        <h1 className="text-2xl font-bold">
+          Com<span className="text-[#1d9bf0]">flix</span>
+        </h1>
+      </div>
 
       <form
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
