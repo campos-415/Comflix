@@ -22,7 +22,6 @@ function Thumbnail({ movie }: Props) {
     onClick={() => {
       setShowModal(true),
       setCurrentMovie(movie)
-      console.log(movie)
     }}>
       {movie?.poster_path || movie?.backdrop_path ? (
         <Image
