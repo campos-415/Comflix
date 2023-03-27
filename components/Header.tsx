@@ -44,7 +44,6 @@ function Header() {
             </h1>
           </div>
         </Link>
-        
 
         <ul className="hidden space-x-4 lg:flex ">
           <li className="HeaderLink">Home</li>
@@ -60,19 +59,19 @@ function Header() {
           <div className="group flex items-center bg-transparent rounded-full">
             <button
               onClick={(e) => {
-                e.preventDefault()
-                router.push(`/${search}`)
+                e.preventDefault();
+                router.push(`/${search}`);
               }}>
               <SearchIcon className="group text-[#1d9bf0] w-5 -z-50 " />
             </button>
             <input
               type="text"
               placeholder="Search Comflix"
-              className="bg-transparent placeholder-white w-[65%] outline-none 
-            text-[#d9d9d9] pl-2 border border-[#1d9bf0]/50 blur-sm
+              className="bg-[#1d9bf0]/60 placeholder-white w-[65%] outline-none 
+            text-[#d9d9d9] pl-2 border border-[#1d9bf0]/50
             focus:border-[#1d9bf0] rounded-full focus:bg-[#141414]"
               onChange={(e) => {
-                setSearch(e.target.value)
+                setSearch(e.target.value);
               }}
             />
           </div>
