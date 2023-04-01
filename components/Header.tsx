@@ -28,7 +28,7 @@ function Header() {
     };
   }, []);
   return (
-    <header className={`${isScroll && "bg-[#141414]"} `}>
+    <header className={`${isScroll && "bg-[#141414]"} flex `}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <Link href="/">
           <div className="flex items-center">
@@ -45,7 +45,7 @@ function Header() {
           </div>
         </Link>
 
-        <ul className="hidden space-x-4 lg:flex ">
+        <ul className="hidden space-x-4 lg:flex  ">
           <li className="HeaderLink">Home</li>
           <li className="HeaderLink">Tv Shows</li>
           <li className="HeaderLink">Movies</li>
@@ -54,9 +54,8 @@ function Header() {
         </ul>
       </div>
 
-      <div className="flex items-center -space-x-6 text-sm font-light">
         <form>
-          <div className="group flex items-center bg-transparent rounded-full">
+          <div className="group flex items-center bg-transparent rounded-full md:pl-60">
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -76,6 +75,7 @@ function Header() {
             />
           </div>
         </form>
+      <div className="flex items-center -space-x-6 text-sm font-light">
 
         <img
           onClick={logout}
